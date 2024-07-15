@@ -1,4 +1,3 @@
-import { ForgotPasswordComponent } from './../component/forgot-password/forgot-password.component';
 import { Injectable, ɵgetLocalePluralCase } from '@angular/core';
 import { GoogleAuthProvider } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
