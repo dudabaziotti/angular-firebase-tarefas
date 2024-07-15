@@ -1,0 +1,112 @@
+<div class="page">
+    <div class="addContainer">
+      <div class="titulo">
+        <h1>Lista de tarefas</h1>
+      </div>
+  
+      <!-- Caso a lista ainda não esteja iniciada -->
+      <div *ngIf="!visualizarLista">
+        <div class="inicio">
+          <img src="../../../../assets/images/edit (1).png" alt="listaTarefas">
+          <div class="criar" (click)="ativarLista()"><h2>Criar lista de tarefas</h2></div>
+        </div>
+      </div>
+  
+      <!-- Lista iniciada -->
+      <div *ngIf="visualizarLista">
+        <form [formGroup]="tarefaForm" (ngSubmit)="onSubmit()">
+          <h3 style="margin-top: 0px;">Título</h3>
+          <input type="text" formControlName="titulo" placeholder="Insira o título da tarefa...">
+          <h3>Descrição</h3>
+          <input type="text" formControlName="descricao" placeholder="Insira a descrição da tarefa...">
+          <h3>Nível de dificuldade</h3>
+          <div class="opcoes">
+            <label class="dificulty-btn">
+              <input type="radio" formControlName="dificuldade" value="fácil"> Fácil
+            </label>
+            <label class="dificulty-btn">
+              <input type="radio" formControlName="dificuldade" value="médio"> Médio
+            </label>
+            <label class="dificulty-btn">
+              <input type="radio" formControlName="dificuldade" value="difícil"> Difícil
+            </label>
+          </div>
+          <button type="submit" [disabled]="!tarefaForm.valid" [ngClass]="{ disabled: !tarefaForm.valid }">Adicionar</button>
+        </form>
+  
+        <hr style="margin-top: 20px; margin-bottom: 20px; border-top: 1px solid #ccc;">
+  
+        <!-- Edição da Tarefa -->
+        <div *ngIf="tarefaEditando">
+          <form [formGroup]="editarForm" (ngSubmit)="onEditSubmit(tarefaEditando.id)">
+            <h3 style="margin-top: 0px;">Editar Tarefa</h3>
+            <h3 style="margin-top: 0px;">Título</h3>
+            <input type="text" formControlName="titulo" placeholder="Insira o título da tarefa...">
+            <h3>Descrição</h3>
+            <input type="text" formControlName="descricao" placeholder="Insira a descrição da tarefa...">
+            <h3>Nível de dificuldade</h3>
+            <div class="opcoes">
+              <label class="dificulty-btn">
+                <input type="radio" formControlName="dificuldade" value="fácil"> Fácil
+              </label>
+              <label class="dificulty-btn">
+                <input type="radio" formControlName="dificuldade" value="médio"> Médio
+              </label>
+              <label class="dificulty-btn">
+                <input type="radio" formControlName="dificuldade" value="difícil"> Difícil
+              </label>
+            </div>
+            <button type="submit" [disabled]="!editarForm.valid" [ngClass]="{ disabled: !editarForm.valid }">Salvar</button>
+          </form>
+        </div>
+  
+        <!-- Listagem de Tarefas -->
+        <div class="listagem">
+          <h2>Tarefas adicionadas ({{tarefas.length}})</h2>
+  
+          <h3>Pendentes</h3>
+          <div *ngFor="let tarefa of tarefas">
+            <div *ngIf="!tarefa.concluida && tarefa !== tarefaEditando">
+              <div class="tarefa">
+                <div class="header">
+                  <h4>{{ tarefa.titulo }}</h4>
+                  <div class="icons">
+                    <span>
+                      <i (click)="concluirTarefa(tarefa.titulo)" class="fa fa-check" aria-hidden="true"></i>
+                      <i (click)="excluirTarefa(tarefa.titulo)" class="fa fa-times" aria-hidden="true"></i>
+                      <i (click)="abrirEdicao(tarefa)" class="fa fa-pen" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="detalhes">
+                  <p style="margin-bottom: 5px;">{{ tarefa.descricao }}</p>
+                  <p style="text-transform: capitalize;"><strong>{{ tarefa.dificuldade }}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <h3>Concluídas</h3>
+          <div *ngFor="let tarefa of tarefas">
+            <div *ngIf="tarefa.concluida">
+              <div class="tarefa">
+                <div class="header">
+                  <h4>{{ tarefa.titulo }}</h4>
+                  <div class="icons">
+                    <span>
+                      <i (click)="excluirTarefa(tarefa.titulo)" class="fa fa-times" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="detalhes">
+                  <p>{{ tarefa.descricao }}</p>
+                  <p style="text-transform: uppercase;"><strong>{{ tarefa.dificuldade }}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

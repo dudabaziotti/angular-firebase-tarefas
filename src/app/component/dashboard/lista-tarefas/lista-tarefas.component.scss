@@ -1,0 +1,188 @@
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+    color: #fff;
+    padding: 50px 0;
+    font-family: 'AlteHaasGroteskBold', sans-serif;
+
+    .addContainer {
+        background-color:  #a3b18a;
+        padding: 30px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 800px;
+
+        .titulo {
+            text-align: center;
+            font-size: 40px;
+            color: white;
+        }
+
+        .inicio {
+            text-align: center;
+            margin-bottom: 40px;
+
+            img {
+                width: 100px;
+                margin: 20px auto 40px;
+                display: block;
+            }
+
+            .criar {
+                background-color: #6C7A52;
+                width: 40%;
+                margin: 0 auto;
+                padding: 8px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 40px;
+
+            h3 {
+                margin-top: 30px;
+            }
+
+            input[type="text"] {
+                padding: 10px;
+                border: 1px solid #555;
+                border-radius: 10px;
+                background-color: #6C7A52;
+                color: #fff;
+
+                &::placeholder {
+                    color: #ffffff91;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .opcoes {
+                display: flex;
+                justify-content: space-between;
+                margin: 10px 0 60px;
+
+                .dificulty-btn {
+                    display: inline-block;
+                    background-color: #6C7A52;
+                    color: white;
+                    padding: 8px;
+                    margin-left: 6%;
+                    margin-right: 6%;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    width: 18%;
+                    text-align: center;
+                    &:hover {
+                        background-color: #566241;
+                    }
+                }
+
+                .selecionar {
+                    background-color: #ffaa7f;
+                }
+            }
+
+            button[type="submit"] {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 0 auto;
+                padding: 10px 20px;
+                border: none;
+                width: 40%;
+                border-radius: 15px;
+                background-color: #6C7A52;
+                color: #fff;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #566241;
+                }
+
+                .disabled {
+                    background-color: rgba(225, 225, 225, 0.53);
+                    color: rgba(138, 138, 138, 0.53);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .listagem {
+            width: 85%;
+            margin: 0 auto;
+
+            h2 {
+                text-align: center;
+                font-size: 40px;
+            }
+
+            h3 {
+                font-size: 28px;
+            }
+
+            .tarefa {
+                background-color: #95A578;
+                border: 1px solid #566241;
+                padding: 15px 15px 1px 15px;
+                border-radius: 5px;
+                width: 80%;
+                margin: 0 0 10px 10px;
+
+                .header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    h4 {
+                        font-size: 22px;
+                        font-weight: bold;
+                    }
+
+                    .icons {
+                        .fa-check {
+                            color: green;
+                            margin-right: 10px;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: rgb(0, 77, 0);
+                            }
+                        }
+
+                        .fa-times {
+                            color: red;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: rgb(131, 0, 0);
+                            }
+                        }
+
+                        .fa-pen {
+                            color: white;
+                            margin-left: 10px;
+                            cursor: pointer;
+                            font-size: 13px;
+
+                            &:hover {
+                                color: #d0dabd;
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+        }
+    }
+}
